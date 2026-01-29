@@ -1,0 +1,21 @@
+﻿{
+  "name": "geometry-library",
+  "version": "1.0.0",
+  "description": "Библиотека для работы с геометрическими фигурами",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.1.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "core-js": "^3.48.0"
+  }
+}

@@ -1,0 +1,19 @@
+﻿# Зависимости
+node_modules/
+npm-debug.log*
+
+# Сборка
+dist/
+
+# Окружение
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Системные
+.DS_Store
+Thumbs.db
