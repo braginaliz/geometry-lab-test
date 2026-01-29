@@ -3,15 +3,14 @@
  * Все конкретные фигуры (круг, квадрат и т.п.) должны его наследовать.
  */
 export abstract class Shape extends EventTarget {
-  protected _id: string;    // Уникальный идентификатор 
-  protected _name: string;  // Название 
-
+  protected _id: string;    
+  protected _name: string;  
   /**
    * @param name - Название фигуры, напр. "Красный круг" 
    */
   constructor(name: string) {
     super();
-    // Генерим уникальный ID для фигуры
+    // уникальный ID для фигуры
     this._id = Math.random().toString(36).substr(2, 9);
     this._name = name;
   }
@@ -32,13 +31,11 @@ export abstract class Shape extends EventTarget {
   }
 
   /**
-   * Вычисляет площадь фигуры.
    * @returns Площадь фигуры в квадратных единицах
    */
   abstract calculateArea(): number;
 
   /**
-   * Вычисляет периметр / или длину окружности фигуры.
    * @returns Периметр фигуры в линейных единицах
    */
   abstract calculatePerimeter(): number;
@@ -56,17 +53,14 @@ export abstract class Shape extends EventTarget {
   abstract toJSON(): object;
 
   /**
-   * Генерирует событие об изменении фигуры.
+   * Cобытие об изменении фигуры.
    * Вызывается в наследниках при изменении параметров фигуры.
-   * Пример использования в наследовании:
-   * this.setRadius(newRadius);
-   * this.emitChange(); // Уведомление всех подписчиков об изменении
    */
   protected emitChange(): void {
     const event = new CustomEvent('shapeChanged', {
       detail: { 
-        shapeId: this._id,    // ID измененной фигуры
-        shapeName: this._name // Имя измененной фигуры
+        shapeId: this._id,    
+        shapeName: this._name 
       }
     });
     this.dispatchEvent(event);

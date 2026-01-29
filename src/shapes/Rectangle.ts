@@ -1,17 +1,17 @@
-﻿import { Shape } from './Shape';
+import { Shape } from './Shape';
 import { Validator } from '../utils/Validator';
 
 /**
- * РљР»Р°СЃСЃ - РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
+ * Класс - прямоугольник
  */
 export class Rectangle extends Shape {
   private _width!: number;
   private _height!: number;
 
   /**
-   * РЎРѕР·РґР°РµС‚ РЅРѕРІС‹Р№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
-   * @param width - РЁРёСЂРёРЅР° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
-   * @param height - Р’С‹СЃРѕС‚Р° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+   * Создает новый прямоугольник
+   * @param width - Ширина 
+   * @param height - Высота 
    */
   constructor(width: number, height: number) {
     super('Rectangle');
@@ -19,9 +19,9 @@ export class Rectangle extends Shape {
   }
 
   /**
-   * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЂР°Р·РјРµСЂС‹ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
-   * @param width - РќРѕРІР°СЏ С€РёСЂРёРЅР°
-   * @param height - РќРѕРІР°СЏ РІС‹СЃРѕС‚Р°
+   * Устанавливает размеры 
+   * @param width - Новая ширина
+   * @param height - Новая высота
    */
   setDimensions(width: number, height: number): void {
     Validator.validatePositive(width, 'Width');
@@ -33,54 +33,54 @@ export class Rectangle extends Shape {
   }
 
   /**
-   * РЁРёСЂРёРЅР° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+   * Ширина 
    */
   get width(): number {
     return this._width;
   }
 
   /**
-   * Р’С‹СЃРѕС‚Р° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+   * Высота 
    */
   get height(): number {
     return this._height;
   }
 
   /**
-   * Р’С‹С‡РёСЃР»СЏРµС‚ РїР»РѕС‰Р°РґСЊ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
-   * @returns РџР»РѕС‰Р°РґСЊ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+   * Вычисляет площадь прямоугольника
+   * @returns 
    */
   calculateArea(): number {
     return this._width * this._height;
   }
 
   /**
-   * Р’С‹С‡РёСЃР»СЏРµС‚ РїРµСЂРёРјРµС‚СЂ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
-   * @returns РџРµСЂРёРјРµС‚СЂ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+   * Вычисляет периметр прямоугольника
+   * @returns 
    */
   calculatePerimeter(): number {
     return 2 * (this._width + this._height);
   }
 
   /**
-   * Р’С‹С‡РёСЃР»СЏРµС‚ РґР»РёРЅСѓ РґРёР°РіРѕРЅР°Р»Рё РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
-   * @returns Р”Р»РёРЅР° РґРёР°РіРѕРЅР°Р»Рё
+   * Вычисляет длину диагонали прямоугольника
+   * @returns
    */
   calculateDiagonal(): number {
     return Math.sqrt(this._width ** 2 + this._height ** 2);
   }
 
   /**
-   * РџСЂРѕРІРµСЂСЏРµС‚, СЏРІР»СЏРµС‚СЃСЏ Р»Рё РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РєРІР°РґСЂР°С‚РѕРј
-   * @returns true, РµСЃР»Рё РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє СЏРІР»СЏРµС‚СЃСЏ РєРІР°РґСЂР°С‚РѕРј
+   * Проверяет, является ли прямоугольник квадратом
+   * @returns true, если  является 
    */
   isSquare(): boolean {
     return this._width === this._height;
   }
 
   /**
-   * РџСЂРѕРІРµСЂСЏРµС‚ РІР°Р»РёРґРЅРѕСЃС‚СЊ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
-   * @returns Promise, СЂР°Р·СЂРµС€Р°СЋС‰РёР№СЃСЏ РІ true, РµСЃР»Рё РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РІР°Р»РёРґРµРЅ
+   * Проверяет валидность прямоугольника
+   * @returns Promise, разрешающийся в true, если прямоугольник валиден
    */
   async validate(): Promise<boolean> {
     try {
@@ -93,8 +93,8 @@ export class Rectangle extends Shape {
   }
 
   /**
-   * РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РІ РѕР±СЉРµРєС‚
-   * @returns РћР±СЉРµРєС‚ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+   * Прямоугольник в объект
+   * @returns
    */
   toJSON(): object {
     return {

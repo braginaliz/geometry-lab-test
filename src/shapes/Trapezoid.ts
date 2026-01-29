@@ -1,9 +1,8 @@
-﻿import { Shape } from './Shape';
+import { Shape } from './Shape';
 import { Validator } from '../utils/Validator';
 
 /**
- * РљР»Р°СЃСЃ, РїСЂРµРґСЃС‚Р°РІР»СЏСЋС‰РёР№ С‚СЂР°РїРµС†РёСЋ
- * Р”РµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚ РїСЂРѕСЃС‚РѕС‚Сѓ РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІС‹С… С„РёРіСѓСЂ
+ * Класс - Трапеция - для расширения типов фигур
  */
 export class Trapezoid extends Shape {
   private _baseA!: number;
@@ -13,12 +12,12 @@ export class Trapezoid extends Shape {
   private _sideD!: number;
 
   /**
-   * РЎРѕР·РґР°РµС‚ РЅРѕРІСѓСЋ С‚СЂР°РїРµС†РёСЋ
-   * @param baseA - РџРµСЂРІРѕРµ РѕСЃРЅРѕРІР°РЅРёРµ
-   * @param baseB - Р’С‚РѕСЂРѕРµ РѕСЃРЅРѕРІР°РЅРёРµ
-   * @param height - Р’С‹СЃРѕС‚Р°
-   * @param sideC - РџРµСЂРІР°СЏ Р±РѕРєРѕРІР°СЏ СЃС‚РѕСЂРѕРЅР°
-   * @param sideD - Р’С‚РѕСЂР°СЏ Р±РѕРєРѕРІР°СЏ СЃС‚РѕСЂРѕРЅР°
+   * Создает новую трапецию
+   * @param baseA - Первое основание
+   * @param baseB - Второе основание
+   * @param height - Высота
+   * @param sideC - Первая боковая сторона
+   * @param sideD - Вторая боковая сторона
    */
   constructor(baseA: number, baseB: number, height: number, sideC: number, sideD: number) {
     super('Trapezoid');
@@ -26,7 +25,7 @@ export class Trapezoid extends Shape {
   }
 
   /**
-   * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РїР°СЂР°РјРµС‚СЂС‹ С‚СЂР°РїРµС†РёРё
+   * Параметры трапеции
    */
   setParameters(baseA: number, baseB: number, height: number, sideC: number, sideD: number): void {
     Validator.validatePositive(baseA, 'Base A');
@@ -44,21 +43,21 @@ export class Trapezoid extends Shape {
   }
 
   /**
-   * Р’С‹С‡РёСЃР»СЏРµС‚ РїР»РѕС‰Р°РґСЊ С‚СЂР°РїРµС†РёРё
+   * площадь (S) трапеции
    */
   calculateArea(): number {
     return ((this._baseA + this._baseB) / 2) * this._height;
   }
 
   /**
-   * Р’С‹С‡РёСЃР»СЏРµС‚ РїРµСЂРёРјРµС‚СЂ С‚СЂР°РїРµС†РёРё
+   * Периметр (P) трапеции
    */
   calculatePerimeter(): number {
     return this._baseA + this._baseB + this._sideC + this._sideD;
   }
 
   /**
-   * РџСЂРѕРІРµСЂСЏРµС‚ РІР°Р»РёРґРЅРѕСЃС‚СЊ С‚СЂР°РїРµС†РёРё
+   * валидность трапеции
    */
   async validate(): Promise<boolean> {
     try {
@@ -74,7 +73,7 @@ export class Trapezoid extends Shape {
   }
 
   /**
-   * РЎРµСЂРёР°Р»РёР·СѓРµС‚ С‚СЂР°РїРµС†РёСЋ РІ РѕР±СЉРµРєС‚
+   * Трапеция в объект
    */
   toJSON(): object {
     return {

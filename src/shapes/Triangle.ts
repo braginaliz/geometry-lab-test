@@ -1,7 +1,6 @@
 ﻿import { Shape } from './Shape';
 import { Validator } from '../utils/Validator';
 
-
 // Добавить пояснения
 export class Triangle extends Shape {
   private _sideA!: number;
@@ -14,7 +13,7 @@ export class Triangle extends Shape {
     this.setSides(sideA, sideB, sideC);
   }
 
-
+  
   setSides(sideA: number, sideB: number, sideC: number): void {
     Validator.validatePositive(sideA, 'Side A');
     Validator.validatePositive(sideB, 'Side B');
@@ -27,17 +26,18 @@ export class Triangle extends Shape {
     this.emitChange();
   }
 
+
   calculateArea(): number {
     const s = this.calculatePerimeter() / 2;
     return Math.sqrt(s * (s - this._sideA) * (s - this._sideB) * (s - this._sideC));
   }
 
-  
+ 
   calculatePerimeter(): number {
     return this._sideA + this._sideB + this._sideC;
   }
 
- 
+  
   isRightAngled(): boolean {
     const sides = [this._sideA, this._sideB, this._sideC].sort((a, b) => a - b);
     return Math.abs(sides[2] ** 2 - (sides[0] ** 2 + sides[1] ** 2)) < 0.0001;
@@ -48,14 +48,14 @@ export class Triangle extends Shape {
     return this._sideA === this._sideB && this._sideB === this._sideC;
   }
 
-
+  
   isIsosceles(): boolean {
     return this._sideA === this._sideB || 
            this._sideA === this._sideC || 
            this._sideB === this._sideC;
   }
 
-
+  
   async validate(): Promise<boolean> {
     try {
       Validator.validatePositive(this._sideA, 'Side A');
@@ -68,7 +68,7 @@ export class Triangle extends Shape {
     }
   }
 
-
+ 
   toJSON(): object {
     return {
       type: 'Triangle',

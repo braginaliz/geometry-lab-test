@@ -1,15 +1,15 @@
-﻿import { Shape } from './Shape';
+import { Shape } from './Shape';
 import { Validator } from '../utils/Validator';
 
 /**
- * РљР»Р°СЃСЃ - РєСЂСѓРі
+ * Класс - круг
  */
 export class Circle extends Shape {
   private _radius!: number;
 
   /**
-   * РЎРѕР·РґР°РµС‚ РЅРѕРІС‹Р№ РєСЂСѓРі
-   * @param radius - Р Р°РґРёСѓСЃ РєСЂСѓРіР°
+   * Создает новый круг
+   * @param radius - Радиус 
    */
   constructor(radius: number) {
     super('Circle');
@@ -17,8 +17,8 @@ export class Circle extends Shape {
   }
 
   /**
-   * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЂР°РґРёСѓСЃ РєСЂСѓРіР°
-   * @param radius - РќРѕРІС‹Р№ СЂР°РґРёСѓСЃ
+   * Устанавливает радиус круга
+   * @param radius - Новый радиус
    */
   setRadius(radius: number): void {
     Validator.validatePositive(radius, 'Radius');
@@ -27,39 +27,39 @@ export class Circle extends Shape {
   }
 
   /**
-   * Р Р°РґРёСѓСЃ РєСЂСѓРіР°
+   * Радиус круга
    */
   get radius(): number {
     return this._radius;
   }
 
   /**
-   * Р”РёР°РјРµС‚СЂ РєСЂСѓРіР°
-   * @returns Р”РёР°РјРµС‚СЂ РєСЂСѓРіР°
+   * Диаметр круга
+   * @returns 
    */
   calculateDiameter(): number {
     return 2 * this._radius;
   }
 
   /**
-   * РџР»РѕС‰Р°РґСЊ РєСЂСѓРіР°
-   * @returns РџР»РѕС‰Р°РґСЊ РєСЂСѓРіР°
+   * Площадь круга
+   * @returns
    */
   calculateArea(): number {
     return Math.PI * this._radius ** 2;
   }
 
   /**
-   * Р”Р»РёРЅР° РѕРєСЂСѓР¶РЅРѕСЃС‚Рё (РїРµСЂРёРјРµС‚СЂ РєСЂСѓРіР°)
-   * @returns Р”Р»РёРЅР° РѕРєСЂСѓР¶РЅРѕСЃС‚Рё
+   * Длина окружности
+   * @returns
    */
   calculatePerimeter(): number {
     return 2 * Math.PI * this._radius;
   }
 
   /**
-   * Р’Р°Р»РёРґРЅРѕСЃС‚СЊ РєСЂСѓРіР°
-   * @returns Promise, СЂР°Р·СЂРµС€Р°СЋС‰РёР№СЃСЏ РІ true, РµСЃР»Рё РєСЂСѓРі РІР°Р»РёРґРµРЅ
+   * Валидность круга
+   * @returns Promise, разрешающийся в true, если круг валиден
    */
   async validate(): Promise<boolean> {
     try {
@@ -71,8 +71,8 @@ export class Circle extends Shape {
   }
 
   /**
-   * РљСЂСѓРі РІ РѕР±СЉРµРєС‚
-   * @returns РћР±СЉРµРєС‚ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РєСЂСѓРіР°
+   * Круг в объект
+   * @returns 
    */
   toJSON(): object {
     return {
